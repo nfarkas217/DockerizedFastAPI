@@ -21,15 +21,18 @@
 **Description:** Returns the status of the server-- 'ok' if the status of the server is ok and 'degraded' if not
 Checks the disk, memory, cpu, and network of server
 Reponse format example:
+
+```json
 {
-"status": "ok",
-"details": {
-"disk_percent": 0.8,
-"memory_percent": 9.7,
-"cpu_percent": 0,
-"network_ok": true
+  "status": "ok",
+  "details": {
+    "disk_percent": 0.8,
+    "memory_percent": 9.7,
+    "cpu_percent": 0,
+    "network_ok": true
+  }
 }
-}
+```
 
 ---
 
@@ -64,18 +67,21 @@ Reponse format example:
 
 ### example request body for /run
 
+```json
 {
-"code": "print('Input Schema: ', input_schema)\nprint('Output Schema: ', output_schema)\nresult = input_schema['a'] + output_schema['b']",
-"input_schema": {
-"a": 45
-},
-"output_schema": {
-"b": 7
+  "code": "print('Input Schema: ', input_schema)\nprint('Output Schema: ', output_schema)\nresult = input_schema['a'] + output_schema['b']",
+  "input_schema": {
+    "a": 45
+  },
+  "output_schema": {
+    "b": 7
+  }
 }
-}
+```
 
 ### curl command
 
+```console
 curl -X 'POST' \
  'http://0.0.0.0:8000/run' \
  -H 'accept: application/json' \
@@ -89,10 +95,13 @@ curl -X 'POST' \
 "b": 7
 }
 }'
+```
 
 ### response body
 
+```json
 {
-"result": 52,
-"logs": "full code: input_schema = {\"a\": 45}\noutput_schema = {\"b\": 7}\nprint('Input Schema: ', input_schema)\nprint('Output Schema: ', output_schema)\nresult = input_schema['a'] + output_schema['b']\nInput Schema: {'a': 45}\nOutput Schema: {'b': 7}\n"
+  "result": 52,
+  "logs": "full code: input_schema = {\"a\": 45}\noutput_schema = {\"b\": 7}\nprint('Input Schema: ', input_schema)\nprint('Output Schema: ', output_schema)\nresult = input_schema['a'] + output_schema['b']\nInput Schema: {'a': 45}\nOutput Schema: {'b': 7}\n"
 }
+```
